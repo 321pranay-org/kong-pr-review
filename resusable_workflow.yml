@@ -1,0 +1,44 @@
+on:
+  workflow_call:
+    inputs:
+      go-version:
+        required: true
+        type: string
+    secrets:
+      PERSONAL_ACCESS_TOKEN:
+        required: true
+      USERNAME:
+        required: true
+
+jobs:
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure git for private modules
+        env:
+            TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+            USERNAME: ${{ secrets.USERNAME }}
+        run: git config --global url."https://${USERNAME}:${TOKEN}@github.com".insteadOf "https://github.com"
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: ${{ inputs.go-version }}
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.54
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v4
+        with:
+          version: latest
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
