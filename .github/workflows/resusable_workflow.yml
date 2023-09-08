@@ -22,8 +22,7 @@ jobs:
       - name: Configure git for private modules
         env:
             TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-            USERNAME: ${{ secrets.USERNAME }}
-        run: git config --global url."https://${USERNAME}:${TOKEN}@github.com".insteadOf "https://github.com"
+        run: git config --global url."https://${TOKEN}@github.com".insteadOf "https://github.com"
 
       - name: Set up Go
         uses: actions/setup-go@v4
