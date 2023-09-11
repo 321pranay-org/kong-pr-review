@@ -7,8 +7,6 @@ on:
     secrets:
       PERSONAL_ACCESS_TOKEN:
         required: true
-      USERNAME:
-        required: true
 
 jobs:
   goreleaser:
