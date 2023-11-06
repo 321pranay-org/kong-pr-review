@@ -1,0 +1,16 @@
+# action.yml
+name: 'kong-pr-review'
+description: 'action to validate kong prs'
+# inputs:
+#   who-to-greet:  # id of input
+#     description: 'Who to greet'
+#     required: true
+#     default: 'World'
+outputs:
+  passed: # id of output
+    description: 'boolean if pr review was successfull or not'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  # args:
+  #   - ${{ inputs.who-to-greet }}
