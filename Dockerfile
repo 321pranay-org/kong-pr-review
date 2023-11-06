@@ -2,7 +2,7 @@ FROM golang:1.21-alpine3.17
 
 WORKDIR /tmp
 
-COPY . .
+COPY ./* ./
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /bin/kong-pr-review main.go
 
