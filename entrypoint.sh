@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./kong-pr-review
+kong-pr-review
 
 if $? == 0; 
 then 
