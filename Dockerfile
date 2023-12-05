@@ -1,6 +1,6 @@
 FROM golang:1.21-alpine3.17
 
-WORKDIR /tmp
+WORKDIR /app
 
 COPY ./* ./
 
@@ -10,7 +10,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /bin/kong-pr-review main.g
 
 RUN chmod +x /bin/kong-pr-review
 
-RUN rm -rf /tmp
+RUN rm -rf /app
 
 WORKDIR /go
 
