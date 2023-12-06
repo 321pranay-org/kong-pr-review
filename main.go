@@ -13,7 +13,7 @@ func main() {
 
 	body := "{\"commit_id\": \"379470964bd2bbd796eda787338e9542a212a1ec\", \"event\": \"APPROVE\"}"
 
-	req, err := http.NewRequest(http.MethodPost, "https://api.github.com/repos/321pranay-org/yaml/pulls/15/reviews", strings.NewReader(body))
+	req, err := http.NewRequest(http.MethodPost, "https://api.github.com/repos/321pranay-org/yaml/pulls/16/reviews", strings.NewReader(body))
 	if err != nil {
 		log.Fatal(err)
 	}
